@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 30px;
+        }
+
+        .form-container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            width: 400px;
+            margin: auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+<h2>Edit Your Digital Card</h2>
+
+<form method="POST">
+
+    Full Name:
+    <input type="text"
+           name="fullname"
+           value="{{ card.fullname }}"
+           pattern="[A-Za-z ]+"
+           title="Name should contain only letters"
+           required>
+
+    Title:
+    <input type="text"
+           name="title"
+           value="{{ card.title }}"
+           pattern="[A-Za-z ]*"
+           title="Only letters allowed">
+
+    Company:
+    <input type="text"
+           name="company"
+           value="{{ card.company }}"
+           pattern="[A-Za-z ]*"
+           title="Only letters allowed">
+
+    Tagline:
+    <input type="text"
+           name="tagline"
+           value="{{ card.tagline }}">
+
+    Mobile:
+    <input type="tel"
+           name="mobile"
+           value="{{ card.mobile }}"
+           pattern="[0-9]{10}"
+           title="Enter exactly 10 digits"
+           required>
+
+    Email:
+    <input type="email"
+           name="email"
+           value="{{ card.email }}"
+           required>
+
+    Bio:
+    <textarea name="bio">{{ card.bio }}</textarea>
+
+    LinkedIn:
+    <input type="text"
+           name="linkedin"
+           value="{{ card.linkedin or '' }}">
+
+    GitHub:
+    <input type="text"
+           name="github"
+           value="{{ card.github or ''}}">
+
+    Instagram:
+    <input type="text"
+           name="instagram"
+           value="{{ card.instagram or ''}}">
+
+    <button type="submit">Update Card</button>
+
+</form>
+</div>
+
+</body>
+</html>

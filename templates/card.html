@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Digital Card</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee, #fddb92);
+    background-size: 300% 300%;
+    animation: gradientShift 12s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.card {
+    width: 420px;
+    padding: 35px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    text-align: center;
+    color: #2d2d2d;
+    animation: fadeIn 1s ease;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin-bottom: 5px;
+    color: #3a3a3a;
+}
+
+.title {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.company {
+    font-weight: 500;
+    margin-top: 6px;
+    color: #a66cff;
+}
+
+.tagline {
+    font-style: italic;
+    font-size: 13px;
+    margin-top: 6px;
+    opacity: 0.8;
+}
+
+.divider {
+    height: 1px;
+    background: rgba(0,0,0,0.1);
+    margin: 20px 0;
+}
+
+.contact {
+    font-size: 14px;
+    margin: 6px 0;
+}
+
+.bio {
+    font-size: 13px;
+    margin-top: 12px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.social {
+    margin-top: 15px;
+}
+
+.social a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #6a5acd;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.social a:hover {
+    color: #ff6f91;
+}
+
+.actions {
+    margin-top: 25px;
+}
+
+.actions a {
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+    color: white;
+}
+
+.edit-btn {
+    background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+}
+
+.delete-btn {
+    background: linear-gradient(135deg, #ff9a9e, #fecfef);
+    margin-left: 10px;
+}
+
+.edit-btn:hover {
+    transform: scale(1.05);
+}
+
+.delete-btn:hover {
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h2>{{ card.fullname }}</h2>
+    <div class="title">{{ card.title }}</div>
+
+    {% if card.company %}
+        <div class="company">{{ card.company }}</div>
+    {% endif %}
+
+    {% if card.tagline %}
+        <div class="tagline">{{ card.tagline }}</div>
+    {% endif %}
+
+    <div class="divider"></div>
+
+    <div class="contact">📱 {{ card.mobile }}</div>
+    <div class="contact">✉ {{ card.email }}</div>
+
+    {% if card.bio %}
+        <div class="bio">{{ card.bio }}</div>
+    {% endif %}
+
+    <div class="social">
+        {% if card.linkedin and card.linkedin != "" %}
+            <a href="{{ card.linkedin }}" target="_blank">LinkedIn</a>
+        {% endif %}
+        {% if card.github  and card.github != "" %}
+            <a href="{{ card.github }}" target="_blank">GitHub</a>
+        {% endif %}
+        {% if card.instagram and card.instagram != "" %}
+            <a href="{{ card.instagram }}" target="_blank">Instagram</a>
+        {% endif %}
+    </div>
+
+    <div class="actions">
+        <a href="/edit/{{ card._id }}" class="edit-btn">Edit</a>
+        <a href="/delete/{{ card._id }}" class="delete-btn">Delete</a>
+    </div>
+
+</div>
+
+
+</body>
+</html>

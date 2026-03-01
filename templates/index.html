@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Digital Visiting Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .form-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 400px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2a5298;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: none;
+            height: 70px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            color: #2a5298;
+            font-weight: bold;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #2a5298;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #1e3c72;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-box">
+    <h2>Create Your Digital Card</h2>
+
+    <form method="POST">
+
+        <input type="text"
+               name="fullname"
+               placeholder="Full Name"
+               pattern="[A-Za-z ]+"
+               required>
+
+        <input type="text"
+               name="title"
+               placeholder="Professional Title or Role"
+               pattern="[A-Za-z ]*">
+
+        <input type="text"
+               name="company"
+               placeholder="Company or Business Name"
+               pattern="[A-Za-z ]*">
+
+        <input type="text"
+               name="tagline"
+               placeholder="Tagline (Optional)">
+
+        <input type="tel"
+               name="mobile"
+               placeholder="Mobile Number"
+               pattern="[0-9]{10}"
+               maxlength="10"
+               required>
+
+        <input type="email"
+               name="email"
+               placeholder="Email Address"
+               required>
+
+        <textarea name="bio" placeholder="Short Bio (Optional)"></textarea>
+
+        <div class="section-title">Social Links (Optional)</div>
+
+        <input type="text"
+               name="linkedin"
+               placeholder="LinkedIn URL (Optional)">
+
+        <input type="text"
+               name="github"
+               placeholder="GitHub URL (Optional)">
+
+        <input type="text"
+               name="instagram"
+               placeholder="Instagram URL (Optional)">
+
+        <button type="submit">Generate Card</button>
+    </form>
+</div>
+
+</body>
+</html>
