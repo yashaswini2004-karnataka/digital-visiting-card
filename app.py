@@ -35,7 +35,8 @@ def home():
             "bio": request.form.get('bio'),
             "linkedin": request.form.get('linkedin') or None,
             "github": request.form.get('github')or None,
-            "instagram": request.form.get('instagram')or None
+            "instagram": request.form.get('instagram')or None,
+            "owner": session['user']
             
         }
 
@@ -60,7 +61,12 @@ def view_card(card_id):
 def edit_card(card_id):
     if 'user' not in session:
         return redirect(url_for('login'))
-    card = collection.find_one({"_id": card_id})
+    card = collection.find_one({
+          "_id": card_id,
+          "owner": session['user']
+    })
+    if not card:
+       return "Unauthorized Access"
 
     if request.method == 'POST':
         updated_data = {
