@@ -170,7 +170,7 @@ h2 {
             <a href="{{ card.instagram }}" target="_blank">Instagram</a>
         {% endif %}
     </div>
-    {% if session.get('user') and card.owner andsession.get('user') == card.owner %}
+    {% if session.get('user') and card.owner and session.get('user') == card.owner %}
     <div class="actions">
         <a href="/edit/{{ card._id }}" class="edit-btn">Edit</a>
         <a href="/delete/{{ card._id }}" class="delete-btn">Delete</a>
